@@ -1,0 +1,16 @@
+{
+  "name": "notes-cli",
+  "version": "1.0.0",
+  "description": "Multi-agent CLI tool for Learning-AI visual project notes",
+  "type": "module",
+  "bin": {
+    "notes": "./bin/notes.js"
+  },
+  "scripts": {
+    "start": "node ./bin/notes.js",
+    "test": "node ./bin/notes.js --help"
+  },
+  "keywords": ["notes", "cli", "ai-agent", "gemini", "claude"],
+  "author": "Antigravity Pair Programmer",
+  "license": "MIT"
+}
