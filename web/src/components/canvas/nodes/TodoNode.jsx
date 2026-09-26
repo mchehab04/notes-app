@@ -1,6 +1,7 @@
 import NodeHandles from './NodeHandles.jsx';
 import { CheckSquare, Square, Trash2, Edit2 } from 'lucide-react';
 import { useNotes } from '../../../context/NotesContext.jsx';
+import MarkdownRenderer from '../../common/MarkdownRenderer.jsx';
 
 export default function TodoNode({ id, data, selected }) {
   const { toggleTodo, deleteItem, setEditingItem } = useNotes();
@@ -92,7 +93,7 @@ export default function TodoNode({ id, data, selected }) {
       </div>
 
       {data.content && (
-        <p className="node-desc">{data.content}</p>
+        <MarkdownRenderer content={data.content} compact className="node-desc" />
       )}
 
     </div>

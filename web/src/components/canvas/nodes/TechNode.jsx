@@ -1,6 +1,7 @@
 import NodeHandles from './NodeHandles.jsx';
 import { Cpu, Trash2, Edit2 } from 'lucide-react';
 import { useNotes } from '../../../context/NotesContext.jsx';
+import MarkdownRenderer from '../../common/MarkdownRenderer.jsx';
 
 export default function TechNode({ id, data, selected }) {
   const { deleteItem, setEditingItem } = useNotes();
@@ -66,7 +67,7 @@ export default function TechNode({ id, data, selected }) {
       </div>
 
       {data.content && (
-        <p className="node-desc">{data.content}</p>
+        <MarkdownRenderer content={data.content} compact className="node-desc" />
       )}
 
       {data.metadata?.tags && data.metadata.tags.length > 0 && (

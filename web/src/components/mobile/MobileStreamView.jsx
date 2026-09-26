@@ -11,6 +11,7 @@ import {
   Filter
 } from 'lucide-react';
 import { useNotes } from '../../context/NotesContext.jsx';
+import MarkdownRenderer from '../common/MarkdownRenderer.jsx';
 
 export default function MobileStreamView() {
   const { items, links, toggleTodo, setActiveDeepDive } = useNotes();
@@ -166,9 +167,9 @@ export default function MobileStreamView() {
 
               {/* Content Description */}
               {item.content && (
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: '1.45' }}>
-                  {item.content}
-                </p>
+                <div style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: '1.45' }}>
+                  <MarkdownRenderer content={item.content} compact />
+                </div>
               )}
 
               {/* Connected Links with Accessible 44px Touch Targets */}

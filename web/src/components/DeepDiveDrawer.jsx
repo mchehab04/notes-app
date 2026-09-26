@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Edit3, Check, BookOpen, Clock, Tag, ExternalLink } from 'lucide-react';
 import { useNotes } from '../context/NotesContext.jsx';
+import MarkdownRenderer from './common/MarkdownRenderer.jsx';
 
 export default function DeepDiveDrawer() {
   const { activeDeepDive, setActiveDeepDive, updateItem, items, links } = useNotes();
@@ -232,15 +233,13 @@ export default function DeepDiveDrawer() {
               )}
 
               {/* Rendered Prose Content */}
-              <div style={{
-                fontSize: '14.5px',
-                lineHeight: '1.7',
-                color: 'var(--text-main)',
-                whiteSpace: 'pre-wrap',
-                fontFamily: 'inherit'
-              }}>
-                {activeDeepDive.content || 'No content provided yet. Click "Edit" to write this deep-dive.'}
-              </div>
+              {activeDeepDive.content ? (
+                <MarkdownRenderer content={activeDeepDive.content} />
+              ) : (
+                <div style={{ color: 'var(--text-faint)', fontStyle: 'italic', fontSize: '14px' }}>
+                  No content provided yet. Click "Edit" to write this deep-dive.
+                </div>
+              )}
             </div>
           )}
         </div>

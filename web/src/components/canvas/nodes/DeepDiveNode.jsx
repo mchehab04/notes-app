@@ -1,6 +1,7 @@
 import NodeHandles from './NodeHandles.jsx';
 import { BookOpen, Trash2, ArrowUpRight, Edit2 } from 'lucide-react';
 import { useNotes } from '../../../context/NotesContext.jsx';
+import MarkdownRenderer from '../../common/MarkdownRenderer.jsx';
 
 export default function DeepDiveNode({ id, data, selected }) {
   const { setActiveDeepDive, deleteItem, setEditingItem } = useNotes();
@@ -66,7 +67,12 @@ export default function DeepDiveNode({ id, data, selected }) {
       </div>
 
       {data.content && (
-        <p className="node-desc">{data.content.replace(/^#+\s*.+/gm, '').trim()}</p>
+        <div style={{ maxHeight: '72px', overflow: 'hidden', position: 'relative', margin: '4px 0' }}>
+          <MarkdownRenderer 
+            content={data.content.replace(/^#+\s*.+/gm, '').trim() || data.content} 
+            compact 
+          />
+        </div>
       )}
 
       <button
